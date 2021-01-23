@@ -1,0 +1,44 @@
+﻿@model MyPortfolio.Models.SkillViewModel
+
+<!-- Start Card -->
+<div class="row">
+    @if (ViewBag.SkillList != null)
+    {
+        foreach (var item in ViewBag.SkillList)
+        {
+            <div class="col-lg-3 pt-3">
+                <div class="card">
+                    <div class="card-body">
+                        <input type="hidden" id="HiddenId" />
+                        <h5 class="card-title">@item.skill_name</h5>
+                        <h5>@item.skill_value %</h5>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @item.skill_value%" role="progressbar" aria-valuenow="@item.skill_value" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="float-right pt-3">
+                            <button id="btnEdit"
+                                    data-toggle="modal"
+                                    data-target="#ModalEditSkill"
+                                    data-id="@item.id_skill"
+                                    data-skill="@item.skill_name"
+                                    data-value="@item.skill_value"
+                                    type="button"
+                                    title="Edit"
+                                    class="btn btn-warning">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button type="button"
+                                    title="Delete"
+                                    onclick="DeleteSkill(@item.id_skill)"
+                                    id="btnDelete"
+                                    class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+<!-- End Card -->

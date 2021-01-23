@@ -1,0 +1,43 @@
+﻿@model MyPortfolio.Models.ProfileViewModel
+
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">ARA</h1>
+
+        </div>
+        <h3>Welcome to Agung Ramadhan Aghnaddinar</h3>
+        <p>
+            Admin Dashboard
+            <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+        </p>
+        <p>Login in. To see it in action.</p>
+        @using (Html.BeginForm("Signin", "Auth", FormMethod.Get))
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.username, new { @class = "form-control", @type = "text", @placeholder = "username" })
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.password, new { @class = "form-control", @type = "password", @placeholder = "Passwords" })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+            <button class="btn btn-primary block full-width m-b" id="btnLogin">Login</button>
+        }
+
+
+        @*<div class="alert alert-danger" id="alertFailed" role="alert">
+            Check your email and password
+        </div>*@
+
+        <p class="m-t"> <small>Agung Ramadhan Aghnaddinar all right reserved &copy; @DateTime.Now.Year</small> </p>
+    </div>
+</div>
+

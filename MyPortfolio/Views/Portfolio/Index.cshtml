@@ -1,0 +1,125 @@
+﻿@model MyPortfolio.Models.PorfolioViewModel
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.PortfolioActive = "active";
+}
+
+@section Styles{
+    <link href="~/Content/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+
+    <div class="col-lg-10">
+        <h2>Portofolio</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/Dashboards">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Portofolio</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="row mb-3">
+                    <div class="col-sm-2 pb-2">
+                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+                                data-target="#AddNewPortofolio">
+                            Add New Portofolio
+                        </button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+                                data-target="#AddNewCategory">
+                            Add New Category
+                        </button>
+                    </div>
+                </div>
+                <!-- Start Modal -->
+                @Html.Partial("ModalAddCateg")
+                @Html.Partial("ModalAddPortfo")
+                @Html.Partial("ModalEditPortfo")
+                <!-- End Modal  -->
+                @Html.Partial("PortfoData")
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+
+@section Scripts{
+    <script type="text/javascript">
+        //file name upload
+        $('.custom-file-input').on('change', function () {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+
+        });
+
+        //Edit Portofolio
+        $("#ModalPortoEdit").on("show.bs.modal", function (event) {
+            var button = $(event.relatedTarget)
+            var idPorto = button.data("id")
+            var CurrentTitle = button.data("title")
+            var CurrentCategory = button.data("category")
+
+            $("#CurrentIdPorto").val(idPorto);
+            $("#CurrentTitle").val(CurrentTitle);
+            $("#CurrentCategory").val(CurrentCategory);
+
+        });
+
+        $(document).ready(function () {
+            $("#btnPortofolio").click(function () {
+
+                var file = $("#image_upload").get(0).files;
+                var portfo_name = $("#portfo_name").val();
+                var id_category = $("#id_category").val();
+
+                var data = new FormData();
+                data.append("image_upload", file[0]);
+                data.append("portfo_name", portfo_name);
+                data.append("id_category", id_category);
+                console.log(data);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/portfolio",
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                });
+            });
+        });
+
+        var DeletePorto = function (id_porfolio) {
+            var id_porfolio = id_porfolio;
+
+            $.ajax({
+                type: "GET",
+                url: "/Portfolio/Delete?id_portfolio=" + id_porfolio,
+                success: function (response) {
+                    if (response == true) {
+                        toastr.success("Success Delete Portfolio");
+                        setTimeout(function () { location.reload() }, 2000);
+                    }
+                    else {
+                        toastr.error("Fail to Delete Portfolio");
+                        setTimeout(function () { location.reload() }, 2000);
+                    }
+                }
+            });
+        }
+    </script>
+}

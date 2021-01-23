@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyPortfolioModelStoreContainer" CdmEntityContainer="MyPortfolioEntities">
+    <EntitySetMapping Name="abouts">
+      <EntityTypeMapping TypeName="MyPortfolioModel.about">
+        <MappingFragment StoreEntitySet="abouts">
+          <ScalarProperty Name="degree" ColumnName="degree" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="current_position" ColumnName="current_position" />
+          <ScalarProperty Name="about_me" ColumnName="about_me" />
+          <ScalarProperty Name="id_about" ColumnName="id_about" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categorys">
+      <EntityTypeMapping TypeName="MyPortfolioModel.category">
+        <MappingFragment StoreEntitySet="categorys">
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contacts">
+      <EntityTypeMapping TypeName="MyPortfolioModel.contact">
+        <MappingFragment StoreEntitySet="contacts">
+          <ScalarProperty Name="github" ColumnName="github" />
+          <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+          <ScalarProperty Name="twitter" ColumnName="twitter" />
+          <ScalarProperty Name="facebook" ColumnName="facebook" />
+          <ScalarProperty Name="instagram" ColumnName="instagram" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="id_contact" ColumnName="id_contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="portfolios">
+      <EntityTypeMapping TypeName="MyPortfolioModel.portfolio">
+        <MappingFragment StoreEntitySet="portfolios">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="image_path" ColumnName="image_path" />
+          <ScalarProperty Name="image_byte" ColumnName="image_byte" />
+          <ScalarProperty Name="image_title" ColumnName="image_title" />
+          <ScalarProperty Name="portfo_name" ColumnName="portfo_name" />
+          <ScalarProperty Name="id_portfolio" ColumnName="id_portfolio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="MyPortfolioModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="services">
+      <EntityTypeMapping TypeName="MyPortfolioModel.service">
+        <MappingFragment StoreEntitySet="services">
+          <ScalarProperty Name="service_content" ColumnName="service_content" />
+          <ScalarProperty Name="service_name" ColumnName="service_name" />
+          <ScalarProperty Name="id_service" ColumnName="id_service" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skills">
+      <EntityTypeMapping TypeName="MyPortfolioModel.skill">
+        <MappingFragment StoreEntitySet="skills">
+          <ScalarProperty Name="skill_value" ColumnName="skill_value" />
+          <ScalarProperty Name="skill_name" ColumnName="skill_name" />
+          <ScalarProperty Name="id_skill" ColumnName="id_skill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MyPortfolioModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="MyPortfolioModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+          <ScalarProperty Name="image_path" ColumnName="image_path" />
+          <ScalarProperty Name="image_byte" ColumnName="image_byte" />
+          <ScalarProperty Name="image_title" ColumnName="image_title" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

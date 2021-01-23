@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Agung Ramadhan A | @ViewBag.Title</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Content/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    
+
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+
+    @RenderSection("Styles", required: false)
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- start of side-bar -->
+        @Html.Partial("_SideBar")
+        <!-- end of side-bar -->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <!-- start of navbar -->
+            @Html.Partial("_NavBar")
+            <!-- end of navbar -->
+            <!-- start of content -->
+            @RenderBody()
+            <!-- end of content -->
+            <!-- start of footer -->
+            @Html.Partial("_Footer")
+            <!-- end of footer -->
+        </div>
+
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/plugins/toastr/toastr.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/Scripts/app/inspinia.js"></script>
+    <script src="~/Scripts/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="~/Scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

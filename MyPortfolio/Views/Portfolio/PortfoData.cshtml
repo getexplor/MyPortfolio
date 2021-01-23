@@ -1,0 +1,45 @@
+﻿@model MyPortfolio.Models.PorfolioViewModel
+
+<div class="lightBoxGallery">
+    <div class="row">
+        @if (ViewBag.PortfoList != null)
+        {
+            foreach (var item in ViewBag.PortfoList)
+            {
+                <div class="col-md-2 col-sm-2 pb-3">
+                    <div class="card">
+                        <input type="hidden" id="HiddenId" value="@item.id_portfolio" />
+                        <img class="card-img-top" src="@item.image_path" title="@item.portfo_name" style="object-fit:cover; object-position:center; width:auto; height:100px;">
+                        <div class="card-footer">
+                            <div class="row justify-content-center">
+                                <div class="col-xs-4">
+                                    <a href="@item.image_path" title="@item.portfo_name" data-gallery="" class="btn btn-primary btn-block"><i class="fa fa-eye"></i></a>
+                                </div>
+                                <div class="col-xs-4 pl-2 pr-2">
+                                    <button type="button" title="Edit" class="btn btn-warning btn-block" data-id="@item.id_portfolio" data-imgs="@item.image_title" data-title="@item.portfo_name" data-category="@item.id_category" data-toggle="modal"
+                                            data-target="#ModalPortoEdit">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" title="Delete" id="btnDelete" onclick="DeletePorto(@item.id_portfolio)" class="btn btn-danger btn-block">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        <div id="blueimp-gallery" class="blueimp-gallery">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model MyPortfolio.Models.ServiceViewModel
+
+<!-- Start Modal -->
+<div class="modal inmodal fade" id="AddNewService" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Add New Service</h4>
+                <small class="font-bold">Make your service company.</small>
+            </div>
+            @using (Html.BeginForm("Create","Service",FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <!-- start form -->
+                    <div class="form-group  row">
+                        <label class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.service_name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.service_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <label class="col-sm-2 col-form-label">Content</label>
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(model => model.service_content, new { @class = "form-control", @rows = "10", @id = "ContentService" })
+                            @Html.ValidationMessageFor(model => model.service_content, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!-- end form -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Submit</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

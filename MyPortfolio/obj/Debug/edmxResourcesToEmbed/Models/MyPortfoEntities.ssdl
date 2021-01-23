@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyPortfolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="abouts">
+    <Key>
+      <PropertyRef Name="id_about" />
+    </Key>
+    <Property Name="id_about" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="about_me" Type="nvarchar(max)" />
+    <Property Name="current_position" Type="varchar" MaxLength="50" />
+    <Property Name="birthday" Type="datetime" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+    <Property Name="country" Type="varchar" MaxLength="50" />
+    <Property Name="age" Type="int" />
+    <Property Name="degree" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="categorys">
+    <Key>
+      <PropertyRef Name="id_category" />
+    </Key>
+    <Property Name="id_category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="contacts">
+    <Key>
+      <PropertyRef Name="id_contact" />
+    </Key>
+    <Property Name="id_contact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="instagram" Type="varchar" MaxLength="50" />
+    <Property Name="facebook" Type="varchar" MaxLength="50" />
+    <Property Name="twitter" Type="varchar" MaxLength="50" />
+    <Property Name="linkedin" Type="varchar" MaxLength="50" />
+    <Property Name="github" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="portfolios">
+    <Key>
+      <PropertyRef Name="id_portfolio" />
+    </Key>
+    <Property Name="id_portfolio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="portfo_name" Type="varchar" MaxLength="50" />
+    <Property Name="image_title" Type="varchar" MaxLength="50" />
+    <Property Name="image_byte" Type="image" />
+    <Property Name="image_path" Type="varchar" MaxLength="50" />
+    <Property Name="id_category" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id_role" />
+    </Key>
+    <Property Name="id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="services">
+    <Key>
+      <PropertyRef Name="id_service" />
+    </Key>
+    <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_name" Type="varchar" MaxLength="50" />
+    <Property Name="service_content" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="skills">
+    <Key>
+      <PropertyRef Name="id_skill" />
+    </Key>
+    <Property Name="id_skill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="skill_name" Type="varchar" MaxLength="50" />
+    <Property Name="skill_value" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="image_title" Type="varchar" MaxLength="50" />
+    <Property Name="image_byte" Type="image" />
+    <Property Name="image_path" Type="varchar" MaxLength="50" />
+    <Property Name="id_role" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_portfolios_categorys">
+    <End Role="categorys" Type="Self.categorys" Multiplicity="1" />
+    <End Role="portfolios" Type="Self.portfolios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorys">
+        <PropertyRef Name="id_category" />
+      </Principal>
+      <Dependent Role="portfolios">
+        <PropertyRef Name="id_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id_role" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyPortfolioModelStoreContainer">
+    <EntitySet Name="abouts" EntityType="Self.abouts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categorys" EntityType="Self.categorys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contacts" EntityType="Self.contacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="portfolios" EntityType="Self.portfolios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="skills" EntityType="Self.skills" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_portfolios_categorys" Association="Self.FK_portfolios_categorys">
+      <End Role="categorys" EntitySet="categorys" />
+      <End Role="portfolios" EntitySet="portfolios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_roles" Association="Self.FK_users_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,42 @@
+﻿@model MyPortfolio.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+    ViewBag.ContactActive = "active";
+}
+
+<!-- start of content -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Contact</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/Dashboards">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Contact</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        @Html.Partial("CardContact")
+        @Html.Partial("CardSocial")
+    </div>
+</div>
+<!-- end of content -->
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+
+@section Scripts{
+    <script type="text/javascript">
+      
+    </script>
+}
+
+

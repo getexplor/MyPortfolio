@@ -1,0 +1,54 @@
+﻿@model MyPortfolio.Models.PorfolioViewModel
+
+<!-- Modal Add Proto -->
+<div class="modal inmodal fade" id="AddNewPortofolio" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Add New Portofolio</h4>
+                <small class="font-bold">This is about your portofolio.</small>
+            </div>
+            <form id="FormPorto" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <!-- start form -->
+                    <div class="custom-file">
+                        @Html.TextBoxFor(model => model.image_upload, new { type = "file", @class = "custom-file-input" })
+                        <label for="logo" id="fileChooser" class="custom-file-label">Choose file...</label>
+                        @Html.ValidationMessageFor(model => model.image_upload, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group  row">
+                        <label class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.portfo_name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.portfo_name, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Category</label>
+                        @if (ViewBag.CategoryList != null)
+                        {
+                            <div class="col-sm-10">
+                                @Html.DropDownListFor(model => model.id_category, ViewBag.CategoryList as SelectList, "-- select --", new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.id_category, "", new { @class = "text-danger" })
+                            </div>
+                        }
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <!-- end form -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnPortofolio">Upload</button>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>
